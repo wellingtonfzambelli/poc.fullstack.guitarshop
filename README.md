@@ -36,6 +36,7 @@ dotnet ef migrations add SeedProducts
 dotnet ef database update
 ```
 2 - Run the application once (press F5) and stop it!
+
 It'll run the SEED logic on the "Progran.cs" file for the initial data in the 'Products' table
 ![image](https://github.com/user-attachments/assets/72dd5bb0-a11d-47a6-ae8b-16c836149f19)
 
