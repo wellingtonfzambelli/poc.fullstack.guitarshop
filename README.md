@@ -30,12 +30,13 @@ Postman (for API testing)
 # Setting up the application
 Run migration commmands
 ```Migrations
-dotnet ef migrations add InitialCreate -c GuitarShopContext
-dotnet ef database update -c GuitarShopContext
+ dotnet ef migrations add SeedProducts
+dotnet ef database update
 ```
 
 Install the SQLite extension for Visual Studio
 ![image](https://github.com/user-attachments/assets/88ab2ade-e37e-4d34-9b90-1efc4d550612)
 
 Open the SQLite window and you're ready to run the queries
-![image](https://github.com/user-attachments/assets/5bb15c2e-0b39-4322-aa6e-babf8ba81e9d)
+![image](https://github.com/user-attachments/assets/5a2fdebe-30b6-4d15-bab9-1c0dc71f2a4c)
+
