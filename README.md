@@ -28,7 +28,8 @@ Docker (Docker Compose)
 Postman (for API testing)
 
 # Setting up the application
-Run migration commmand
+Run migration commmands
 ```Migrations
 dotnet ef migrations add InitialCreate -c GuitarShopContext
+dotnet ef database update -c GuitarShopContext
 ```
