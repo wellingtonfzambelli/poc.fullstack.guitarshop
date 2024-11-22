@@ -3,6 +3,7 @@
 
 # Stacks of this project
 - ReactJs
+- Vite
 - .NET 8
 - Entity Framework Core (Migrations)
 - SQLIte
@@ -27,8 +28,8 @@ Bootstrap
 Docker (Docker Compose)
 Postman (for API testing)
 
-# Setting up the application
-1 - Run migration commmands
+# Setting up the backend application
+1 - Run migration commands
 ```Migrations
 dotnet ef migrations add SeedProducts
 ```
@@ -46,3 +47,14 @@ It'll run the SEED logic on the "Progran.cs" file for the initial data in the 'P
 4 - Open the SQLite window and you're ready to run the queries
 ![image](https://github.com/user-attachments/assets/5a2fdebe-30b6-4d15-bab9-1c0dc71f2a4c)
 
+# Setting up the backend application
+Open the workspace "poc.fullstack.guitarshop.frontend" on the Visual Studio Code
+
+On the terminal execute the commands bellow
+
+```terminal vs code
+npm install
+```
+```terminal vs code
+npm run dev
+```
