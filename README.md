@@ -4,7 +4,7 @@
 # Stacks of this project
 - ReactJs
 - .NET 8
-- Entity Framework Core
+- Entity Framework Core (Migrations)
 - SQLIte
 - Web Api
 - Swagger
@@ -27,4 +27,8 @@ Bootstrap
 Docker (Docker Compose)
 Postman (for API testing)
 
-api.nasa.gov Web Site (for testing)
+# Setting up the application
+Run migration commmand
+```Migrations
+dotnet ef migrations add InitialCreate
+```
