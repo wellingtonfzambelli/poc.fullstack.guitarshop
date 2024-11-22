@@ -38,8 +38,7 @@ dotnet ef database update
 2 - Run the application once (press F5) and stop it!
 
 It'll run the SEED logic on the "Progran.cs" file for the initial data in the 'Products' table
-![image](https://github.com/user-attachments/assets/72dd5bb0-a11d-47a6-ae8b-16c836149f19)
-
+![image](https://github.com/user-attachments/assets/845848f5-9687-4c3d-ac5f-c4cc93b4ebca)
 
 3 - Install the SQLite extension for Visual Studio
 ![image](https://github.com/user-attachments/assets/88ab2ade-e37e-4d34-9b90-1efc4d550612)
