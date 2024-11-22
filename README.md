@@ -30,5 +30,5 @@ Postman (for API testing)
 # Setting up the application
 Run migration commmand
 ```Migrations
-dotnet ef migrations add InitialCreate
+dotnet ef migrations add InitialCreate -c GuitarShopContext
 ```
