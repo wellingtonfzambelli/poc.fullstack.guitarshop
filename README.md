@@ -48,9 +48,9 @@ It'll run the SEED logic on the "Progran.cs" file for the initial data in the 'P
 ![image](https://github.com/user-attachments/assets/5a2fdebe-30b6-4d15-bab9-1c0dc71f2a4c)
 
 # Setting up the frontend application
-Open the workspace "poc.fullstack.guitarshop.frontend" on the Visual Studio Code
+1 - Open the workspace "poc.fullstack.guitarshop.frontend" on the Visual Studio Code
 
-On the terminal execute the commands bellow
+2 - On the terminal execute the commands bellow
 
 ```terminal vs code
 npm install
@@ -59,7 +59,7 @@ npm install
 npm run dev
 ```
 
-It will run the application using the port 3000
+3 - It will run the application using the port 3000
 
 http://localhost:3000/
 
