@@ -2,13 +2,13 @@
 
 
 # Stacks of this project
-.NET 8
-Entity Framework Core
-ReactJs
-SQLIte
-Web Api
-Swagger
-Visual Studio 2022
+- ReactJs
+- .NET 8
+- Entity Framework Core
+- SQLIte
+- Web Api
+- Swagger
+- Visual Studio 2022
 
 
 Action Filter
