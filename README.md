@@ -58,7 +58,10 @@ npm install
 ```terminal vs code
 npm run dev
 ```
+
 It will run the application using the port 3000
+
 http://localhost:3000/
+
 ![image](https://github.com/user-attachments/assets/fa3294fd-6e95-4fe1-9798-a331dddf5004)
 
