@@ -34,7 +34,7 @@ dotnet ef migrations add InitialCreate -c GuitarShopContext
 dotnet ef database update -c GuitarShopContext
 ```
 
-Install the SQLite extension on the Visual Studio
+Install the SQLite extension for Visual Studio
 ![image](https://github.com/user-attachments/assets/88ab2ade-e37e-4d34-9b90-1efc4d550612)
 
 Open the SQLite window and you're ready to run the queries
