@@ -29,7 +29,7 @@ public sealed class ProductController : ControllerBase
         return Ok(products);
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetProductByIdAsync(Guid id, CancellationToken ct)
     {
         var product = await _context.Products.FindAsync(id, ct);

@@ -15,15 +15,21 @@ builder.Services.AddDbContext<GuitarShopContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+// CORS
+builder.Services.AddCors();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
+
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 
-    #region EF SEED
+    // EF SEED
     var scope = app.Services.CreateScope();
     var context = scope.ServiceProvider.GetRequiredService<GuitarShopContext>();
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
@@ -37,8 +43,15 @@ if (app.Environment.IsDevelopment())
     {
         logger.LogError(ex, "A problem occured during Migration");
     }
-    #endregion
 }
+
+// CORS
+app.UseCors(opt =>
+{
+    opt.AllowAnyHeader()
+       .AllowAnyMethod()
+       .WithOrigins("http://localhost:3000");
+});
 
 app.UseAuthorization();
 app.MapControllers();
