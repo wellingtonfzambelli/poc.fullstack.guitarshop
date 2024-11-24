@@ -67,3 +67,7 @@ http://localhost:3000/
 
 ![image](https://github.com/user-attachments/assets/fa3294fd-6e95-4fe1-9798-a331dddf5004)
 
+4 - Install the Material UI. Execute the command bellow using the terminal
+```terminal vs code
+npm install @mui/material @emotion/react @emotion/styled
+```
