@@ -71,3 +71,7 @@ http://localhost:3000/
 ```terminal vs code
 npm install @mui/material @emotion/react @emotion/styled
 ```
+5 - Install the Material UI fonts. Execute the command bellow using the terminal
+```terminal vs code
+npm install @fontsource/roboto
+```
