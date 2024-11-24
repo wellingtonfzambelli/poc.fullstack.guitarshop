@@ -4,6 +4,7 @@
 # Stacks of this project
 - ReactJs
 - Vite
+- Material UI
 - .NET 8
 - Entity Framework Core (Migrations)
 - SQLIte
