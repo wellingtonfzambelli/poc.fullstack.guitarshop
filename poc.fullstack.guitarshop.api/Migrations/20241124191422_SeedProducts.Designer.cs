@@ -11,7 +11,7 @@ using poc.fullstack.guitarshop.api.Data;
 namespace poc.fullstack.guitarshop.api.Migrations
 {
     [DbContext(typeof(GuitarShopContext))]
-    [Migration("20241122181756_SeedProducts")]
+    [Migration("20241124191422_SeedProducts")]
     partial class SeedProducts
     {
         /// <inheritdoc />

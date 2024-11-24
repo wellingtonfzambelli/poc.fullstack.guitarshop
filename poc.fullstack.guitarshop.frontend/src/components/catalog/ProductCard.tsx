@@ -23,7 +23,7 @@ export default function ProductCard({product}: Props){
             / >
             <CardMedia
                 sx={{ height: 140, backgroundSize: 'contain', bgcolor: 'primary.ligtht' }}
-                image="https://picsum.photos/id/237/200/300"
+                image={`./images/products/${product.pictureUrl}`}
                 title={product.name}
             />
             <CardContent>
