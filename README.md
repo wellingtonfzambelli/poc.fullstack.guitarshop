@@ -71,7 +71,16 @@ http://localhost:3000/
 ```terminal vs code
 npm install @mui/material @emotion/react @emotion/styled
 ```
+
 5 - Install the Material UI fonts. Execute the command bellow using the terminal
 ```terminal vs code
 npm install @fontsource/roboto
+```
+
+6 - Use the Material UI imports bellow on the main react page (index.tsx or layout.tsx)
+```main react page
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 ```
