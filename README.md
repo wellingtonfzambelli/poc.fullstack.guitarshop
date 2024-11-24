@@ -2,9 +2,12 @@
 
 
 # Stacks of this project
+__Frontend__
 - ReactJs
 - Vite
 - Material UI _(https://mui.com/material-ui)_
+
+__Backend__
 - .NET 8
 - Entity Framework Core (Migrations)
 - SQLIte
