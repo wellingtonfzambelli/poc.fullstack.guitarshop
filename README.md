@@ -11,6 +11,7 @@
 - Web Api
 - Swagger
 - Visual Studio Community 2022
+- Google Chrome (using React DevTools) - main browser
 
 
 Action Filter
