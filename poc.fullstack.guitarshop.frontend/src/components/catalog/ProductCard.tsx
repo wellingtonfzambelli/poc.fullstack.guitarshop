@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Product } from '../../Models/Product';
+import { Product } from '../../app/models/Product';
 import { Avatar, CardHeader } from '@mui/material';
 
 interface Props{
