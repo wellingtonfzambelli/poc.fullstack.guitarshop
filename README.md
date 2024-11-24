@@ -93,3 +93,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 ```
+8 - Install the React Router Dom component using the terminal
+```VS Code terminal
+npm install react-router-dom
+```
