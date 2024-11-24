@@ -4,12 +4,14 @@
 # Stacks of this project
 - ReactJs
 - Vite
+- Material UI _(https://mui.com/material-ui)_
 - .NET 8
 - Entity Framework Core (Migrations)
 - SQLIte
 - Web Api
 - Swagger
 - Visual Studio Community 2022
+- Google Chrome (using React DevTools) - main browser
 
 
 Action Filter
@@ -52,10 +54,10 @@ It'll run the SEED logic on the "Progran.cs" file for the initial data in the 'P
 
 2 - On the terminal execute the commands bellow
 
-```terminal vs code
+```VS Code terminal
 npm install
 ```
-```terminal vs code
+```VS Code terminal
 npm run dev
 ```
 
@@ -65,3 +67,25 @@ http://localhost:3000/
 
 ![image](https://github.com/user-attachments/assets/fa3294fd-6e95-4fe1-9798-a331dddf5004)
 
+4 - Install the Material UI. Execute the command bellow using the terminal
+```VS Code terminal
+npm install @mui/material @emotion/react @emotion/styled
+```
+
+5 - Install the Material UI fonts. Execute the command bellow using the terminal
+```VS Code terminal
+npm install @fontsource/roboto
+```
+
+6 - Install the Material UI icons. Execute the command bellow using the terminal
+```VS Code terminal
+npm install @mui/icons-material
+```
+
+7 - Use the Material UI imports bellow on the main react page (index.tsx or layout.tsx)
+```main react page
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+```
