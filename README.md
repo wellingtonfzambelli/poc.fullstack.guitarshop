@@ -5,8 +5,9 @@
 __Frontend__
 - ReactJs
 - Vite
-- Component -> Material UI _(https://mui.com/material-ui)_
-- Component -> React Router _(https://reactrouter.com)_
+- Library -> Material UI _(https://mui.com/material-ui)_
+- Library -> React Router _(https://reactrouter.com)_
+- Library -> Axios
 
 __Backend__
 - .NET 8
