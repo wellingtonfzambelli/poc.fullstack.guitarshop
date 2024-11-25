@@ -5,8 +5,9 @@
 __Frontend__
 - ReactJs
 - Vite
-- Component -> Material UI _(https://mui.com/material-ui)_
-- Component -> React Router _(https://reactrouter.com)_
+- Library -> Material UI _(https://mui.com/material-ui)_
+- Library -> React Router _(https://reactrouter.com)_
+- Library -> Axios
 
 __Backend__
 - .NET 8
@@ -93,7 +94,13 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 ```
-8 - Install the React Router Dom component using the terminal
+
+8 - Install the React Router Dom library using the terminal
 ```VS Code terminal
 npm install react-router-dom
+```
+
+9 - Install the Axios library using the terminal
+```VS Code terminal
+npm install axios
 ```
