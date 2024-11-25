@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Product } from "../../models/Product";
 import APIs from "../../services/apis";
 import settings from "../../utils/settings";
+import NotFoundErrorPage from "../error/NotFoundErrorPage";
 
 export default function ProductDetails() {
     const {id} = useParams<{id: string}>();
@@ -18,7 +19,7 @@ export default function ProductDetails() {
 
     if(loading) return <h3>Loading...</h3>
 
-    if(!product) return <h3>Product not found</h3>
+    if(!product) return <NotFoundErrorPage />
 
     return (
         <Grid container spacing={6}>

@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import settings from "../utils/settings";
 import { toast } from "react-toastify";
+import { router } from "../app/router/Routes";
 
 axios.interceptors.response.use(async response =>{
     return response;
@@ -26,10 +27,10 @@ axios.interceptors.response.use(async response =>{
             toast.error(data.title);
             break;
         case 404:
-            toast.error(data.title);
+            router.navigate('/not-found')
             break;
         case 500:
-            toast.error(data.title);
+            router.navigate('/server-error', {state: {error: data}})
             break;
         default:
             break;

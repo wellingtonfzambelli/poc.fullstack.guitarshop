@@ -4,7 +4,7 @@ import APIs from "../../services/apis";
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
 
-export default function ErrorPage(){
+export default function SimulateErrorsPage(){
     const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
     function getValidationError() {
