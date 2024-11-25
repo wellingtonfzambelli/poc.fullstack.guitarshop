@@ -5,6 +5,7 @@ import { Product } from "../../models/Product";
 import APIs from "../../services/apis";
 import settings from "../../utils/settings";
 import NotFoundErrorPage from "../error/NotFoundErrorPage";
+import Loader from "../../app/layout/Loader";
 
 export default function ProductDetails() {
     const {id} = useParams<{id: string}>();
@@ -17,7 +18,7 @@ export default function ProductDetails() {
             .finally(() => setLoading(false));
     }, [id])
 
-    if(loading) return <h3>Loading...</h3>
+    if(loading) return <Loader message='Loading product' />
 
     if(!product) return <NotFoundErrorPage />
 
