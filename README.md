@@ -8,6 +8,7 @@ __Frontend__
 - Library -> Material UI _(https://mui.com/material-ui)_
 - Library -> React Router _(https://reactrouter.com)_
 - Library -> Axios
+- Library -> React Toastify _(https://www.npmjs.com/package/react-toastify)_
 
 __Backend__
 - .NET 8
