@@ -27,7 +27,7 @@ public sealed class MockErrorController : ControllerBase
         return ValidationProblem();
     }
 
-    [HttpGet("exception")]
+    [HttpGet("server-error")]
     public async Task<IActionResult> GetExceptiondAsync(CancellationToken ct) =>
         throw new Exception("This is a server error");
 }

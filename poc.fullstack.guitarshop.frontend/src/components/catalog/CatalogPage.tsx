@@ -1,16 +1,15 @@
 
 import { useEffect, useState } from "react";
 import ProductList from "./ProductList";
-import { Product } from "../../app/models/Product";
+import { Product } from "../../models/Product";
+import APIs from "../../services/apis";
 
 
-export default function Catalog(){
+export default function CatalogPage(){
     const [products, setProduct] = useState<Product[]>([]);
 
     useEffect(() => {
-      fetch("http://localhost:5000/api/v1/product")
-      .then(response => response.json())
-      .then(jsonResponse => setProduct(jsonResponse));
+      APIs.ApiCatalog.getProducts().then(response => setProduct(response));
     }, []);
 
     return (

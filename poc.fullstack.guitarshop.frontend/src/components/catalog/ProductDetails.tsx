@@ -1,8 +1,9 @@
 import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from "@mui/material";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Product } from "../../app/models/Product";
+import { Product } from "../../models/Product";
+import APIs from "../../services/apis";
+import settings from "../../utils/settings";
 
 export default function ProductDetails() {
     const {id} = useParams<{id: string}>();
@@ -10,8 +11,8 @@ export default function ProductDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() =>{
-        axios.get(`http://localhost:5000/api/v1/product/${id}`)
-            .then(response => setProduct(response.data))
+        APIs.ApiCatalog.getDetails(id)
+            .then(response => setProduct(response))
             .catch(error => console.log(error))
             .finally(() => setLoading(false));
     }, [id])
@@ -23,7 +24,7 @@ export default function ProductDetails() {
     return (
         <Grid container spacing={6}>
             <Grid item xs={6}>
-                <img src={`/images/products/${product.pictureUrl}`} alt={product.name} style={{width: '100%'}} />
+                <img src={`${settings.PATH_IMAGES_PRODUCTS}${product.pictureUrl}`} alt={product.name} style={{width: '100%'}} />
             </Grid>
             <Grid item xs={6}>
                 <Typography variant="h3">{product.name}</Typography>

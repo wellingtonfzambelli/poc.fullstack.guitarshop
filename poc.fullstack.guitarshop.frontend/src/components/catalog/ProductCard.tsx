@@ -4,9 +4,10 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Product } from '../../app/models/Product';
+import { Product } from '../../models/Product';
 import { Avatar, CardHeader } from '@mui/material';
 import { Link } from 'react-router-dom';
+import settings from '../../utils/settings';
 
 interface Props{
     product: Product;
@@ -24,7 +25,7 @@ export default function ProductCard({product}: Props){
             / >
             <CardMedia
                 sx={{ height: 140, backgroundSize: 'contain', bgcolor: 'primary.ligtht' }}
-                image={`./images/products/${product.pictureUrl}`}
+                image={`${settings.PATH_IMAGES_PRODUCTS}${product.pictureUrl}`}
                 title={product.name}
             />
             <CardContent>
