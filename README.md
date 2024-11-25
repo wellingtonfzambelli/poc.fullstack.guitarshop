@@ -89,3 +89,7 @@ npm install react-router-dom
 ```VS Code terminal
 npm install axios
 ```
+10 - Install the Toastify library using the terminal
+```VS Code terminal
+npm install toastify
+```
