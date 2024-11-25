@@ -5,9 +5,9 @@
 __Frontend__
 - ReactJs
 - Vite
+- Library -> Axios
 - Library -> Material UI _(https://mui.com/material-ui)_
 - Library -> React Router _(https://reactrouter.com)_
-- Library -> Axios
 - Library -> React Toastify _(https://www.npmjs.com/package/react-toastify)_
 
 __Backend__
@@ -19,22 +19,6 @@ __Backend__
 - Visual Studio Community 2022
 - Google Chrome (using React DevTools) - main browser
 
-
-Action Filter
-Filter Validation
-Serilog
-Rate Limit
-Bearer Token
-Identity
-HealthCheck
-RabbitMQ
-MediatR
-Redis
-XUnit
-SonarQube
-Bootstrap
-Docker (Docker Compose)
-Postman (for API testing)
 
 # Setting up the backend application
 1 - Run migration commands
