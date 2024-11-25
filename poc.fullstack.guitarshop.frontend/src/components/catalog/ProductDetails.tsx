@@ -13,7 +13,6 @@ export default function ProductDetails() {
     useEffect(() =>{
         APIs.ApiCatalog.getDetails(id)
             .then(response => setProduct(response))
-            .catch(error => console.log(error))
             .finally(() => setLoading(false));
     }, [id])
 
