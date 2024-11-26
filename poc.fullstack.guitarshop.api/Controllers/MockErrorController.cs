@@ -7,19 +7,19 @@ namespace poc.fullstack.guitarshop.api.Controllers;
 public sealed class MockErrorController : ControllerBase
 {
     [HttpGet("not-found")]
-    public async Task<IActionResult> GetNotFoundAsync(CancellationToken ct) =>
+    public IActionResult GetNotFoundAsync() =>
         NotFound();
 
     [HttpGet("bad-request")]
-    public async Task<IActionResult> GetBadRequestAsync(CancellationToken ct) =>
+    public IActionResult GetBadRequest() =>
         BadRequest(new ProblemDetails { Title = "This is a bad request" });
 
     [HttpGet("unauthorized")]
-    public async Task<IActionResult> GetUnauthorizedAsync(CancellationToken ct) =>
+    public IActionResult GetUnauthorized() =>
         Unauthorized();
 
     [HttpGet("validation-error")]
-    public async Task<IActionResult> GetValidationErrordAsync(CancellationToken ct)
+    public IActionResult GetValidationErrord()
     {
         ModelState.AddModelError("Problem1", "This is the first error");
         ModelState.AddModelError("Problem1", "This is the second error");
@@ -28,6 +28,6 @@ public sealed class MockErrorController : ControllerBase
     }
 
     [HttpGet("server-error")]
-    public async Task<IActionResult> GetExceptiondAsync(CancellationToken ct) =>
+    public IActionResult GetExceptiond() =>
         throw new Exception("This is a server error");
 }

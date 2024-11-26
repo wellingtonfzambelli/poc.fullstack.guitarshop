@@ -3,7 +3,10 @@ import settings from "../utils/settings";
 import { toast } from "react-toastify";
 import { router } from "../app/router/Routes";
 
+const sleep = () => new Promise(resolve => setTimeout(resolve, 1000));
+
 axios.interceptors.response.use(async response =>{
+    await sleep();
     return response;
 }, (error: AxiosError) => {
     

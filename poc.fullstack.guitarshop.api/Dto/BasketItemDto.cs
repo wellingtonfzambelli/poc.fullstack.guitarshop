@@ -1,13 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace poc.fullstack.guitarshop.api.Dto;
 
-namespace poc.fullstack.guitarshop.api.Entities;
-
-public sealed class Product
+public sealed class BasketItemDto
 {
-    [Key]
-    public Guid Id { get; set; }
+    public Guid ProductId { get; set; }
     public string Name { get; set; }
-    public string Description { get; set; }
     public double Price { get; set; }
     public string PictureUrl { get; set; }
     public string Type { get; set; }

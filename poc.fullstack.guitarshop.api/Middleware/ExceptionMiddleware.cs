@@ -24,7 +24,7 @@ public sealed class ExceptionMiddleware
     public async Task InvokeAsync(HttpContext context)
     {
         try
-        { 
+        {
             await _next(context);
         }
         catch (Exception ex)
@@ -40,7 +40,7 @@ public sealed class ExceptionMiddleware
                 Title = ex.Message,
             };
 
-            var options = new JsonSerializerOptions {PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 
             var json = JsonSerializer.Serialize(response, options);
 

@@ -33,8 +33,8 @@ public sealed class ProductController : ControllerBase
     public async Task<ActionResult<Product>> GetProductByIdAsync(Guid id, CancellationToken ct)
     {
         var product = await _context.Products.FindAsync(id, ct);
-        
-        if (product is null) 
+
+        if (product is null)
             return NotFound();
 
         return Ok(product);

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using poc.fullstack.guitarshop.api.Data;
 
@@ -10,9 +11,11 @@ using poc.fullstack.guitarshop.api.Data;
 namespace poc.fullstack.guitarshop.api.Migrations
 {
     [DbContext(typeof(GuitarShopContext))]
-    partial class GuitarShopContextModelSnapshot : ModelSnapshot
+    [Migration("20241126004759_BasketEntityAdded")]
+    partial class BasketEntityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.11");

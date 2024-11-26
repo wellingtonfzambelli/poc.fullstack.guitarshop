@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // SQLite
-builder.Services.AddDbContext<GuitarShopContext>(opt => 
+builder.Services.AddDbContext<GuitarShopContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
@@ -51,6 +51,7 @@ app.UseCors(opt =>
 {
     opt.AllowAnyHeader()
        .AllowAnyMethod()
+       .AllowCredentials()
        .WithOrigins("http://localhost:3000");
 });
 
