@@ -12,6 +12,7 @@ __Frontend__
 - Library -> React Router _(https://reactrouter.com)_
 - Library -> React Toastify _(https://www.npmjs.com/package/react-toastify)_
 - Visual Studio Code -> Extensions (Simple React Snippets, ESLint, Material Icon Theme, Prettier, StandardJS)
+- Browser Plugins -> React Developer Tools
 
 __Backend__
 - .NET 8
