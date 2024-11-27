@@ -1,10 +1,11 @@
-import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { Delete } from "@mui/icons-material";
 import { useBasketContext } from "../../context/BasketProvider";
+import settings from "../../utils/settings";
 
 export default function BasketPage() {
     const {basket} = useBasketContext();
-    
+
     if(!basket) return <Typography variant="h3">Your basket is empty</Typography>
 
     return (
@@ -26,11 +27,14 @@ export default function BasketPage() {
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                     <TableCell component="th" scope="row">
-                        {item.name}
+                        <Box display='flex' alignItems='center'>
+                            <img src={`${settings.PATH_IMAGES_PRODUCTS}${item.pictureUrl}`} alt={item.name} style={{height:50, marginRight:20}} />
+                            <span>{item.name}</span>
+                        </Box>
                     </TableCell>
-                    <TableCell align="right">{item.price.toFixed(2)}</TableCell>
+                    <TableCell align="right">${item.price.toFixed(2)}</TableCell>
                     <TableCell align="right">{item.quantity}</TableCell>
-                    <TableCell align="right">{(item.price * item.quantity).toFixed(2)}</TableCell>
+                    <TableCell align="right">${(item.price * item.quantity).toFixed(2)}</TableCell>
                     <TableCell align="right">
                         <IconButton color="error">
                             <Delete />

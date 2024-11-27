@@ -15,10 +15,12 @@ function App() {
   useEffect(() => {
     const buyerId = getCookie('buyerId');
 
-    if(buyerId){
+    if(buyerId) {
       APIs.ApiBasket.getBasket()
         .then(basket => setBasket(basket))
         .finally(() => setLoading(false));
+    } else {
+      setLoading(false);
     }
   }, [setBasket])
 
