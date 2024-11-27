@@ -5,6 +5,7 @@
 __Frontend__
 - ReactJs
 - Vite
+- Redux
 - Library -> Axios
 - Library -> Material UI _(https://mui.com/material-ui)_
 - Library -> React Router _(https://reactrouter.com)_
@@ -93,4 +94,9 @@ npm install axios
 10 - Install the Toastify library using the terminal
 ```VS Code terminal
 npm install react-toastify
+```
+
+11 - Install the Redux library using the terminal
+```VS Code terminal
+npm install @reduxjs/toolkit
 ```
