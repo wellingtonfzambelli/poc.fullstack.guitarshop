@@ -5,9 +5,9 @@
 __Frontend__
 - ReactJs
 - Vite
-- Library -> Redux
+- Library -> Redux _(https://redux.js.org)_
 - Library -> Redux Toolkit
-- Library -> Axios
+- Library -> Axios _(https://axios-http.com)_
 - Library -> Material UI _(https://mui.com/material-ui)_
 - Library -> React Router _(https://reactrouter.com)_
 - Library -> React Toastify _(https://www.npmjs.com/package/react-toastify)_
