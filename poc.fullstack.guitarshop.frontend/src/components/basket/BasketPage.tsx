@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react"
-import APIs from "../../services/apis";
-import Loader from "../../app/layout/Loader";
 import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
-import { Basket } from "../../models/Basket";
 import { Delete } from "@mui/icons-material";
+import { useBasketContext } from "../../context/BasketProvider";
 
 export default function BasketPage() {
-    const [loading, setLoading] = useState(true);
-    const [basket, setBasket] = useState<Basket | null>(null);
-
-    useEffect(() => {
-        APIs.ApiBasket.getBasket()
-            .then(basket => setBasket(basket))
-            .finally(() => setLoading(false))
-    }, [])
-
-    if(loading) return <Loader message="Loading basket" />
-
+    const {basket} = useBasketContext();
+    
     if(!basket) return <Typography variant="h3">Your basket is empty</Typography>
 
     return (

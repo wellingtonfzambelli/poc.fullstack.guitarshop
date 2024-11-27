@@ -11,6 +11,7 @@ import settings from '../../utils/settings';
 import APIs from '../../services/apis';
 import { LoadingButton } from '@mui/lab';
 import { useState } from 'react';
+import { useBasketContext } from '../../context/BasketProvider';
 
 interface Props{
     product: Product;
@@ -18,17 +19,16 @@ interface Props{
 
 export default function ProductCard({product}: Props){
     const [loading, setLoading] = useState(false);
-    
+    const {setBasket} = useBasketContext();
+
     function handleAddItem(productId: string) {
         setLoading(true);
         
-        APIs.ApiBasket
-            .addProduct(productId)
+        APIs.ApiBasket.addProduct(productId)
+            .then(basket => setBasket(basket))
             .finally(() => setLoading(false));
     }
 
-    //if(loading) return <Loader message='Loading product' />
-    
     return (
         <Card>
             <CardHeader 

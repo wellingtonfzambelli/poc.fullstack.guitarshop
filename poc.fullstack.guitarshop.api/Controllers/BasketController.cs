@@ -25,7 +25,7 @@ public sealed class BasketController : ControllerBase
         Basket basket = await RetriveBasketAsync(ct);
 
         if (basket is null)
-            return NotFound();
+            return NoContent();
 
         return MapBasketToDto(basket);
     }
