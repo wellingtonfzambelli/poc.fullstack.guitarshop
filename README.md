@@ -6,6 +6,7 @@ __Frontend__
 - ReactJs
 - Vite
 - Library -> Redux
+- Library -> Redux Toolkit
 - Library -> Axios
 - Library -> Material UI _(https://mui.com/material-ui)_
 - Library -> React Router _(https://reactrouter.com)_
