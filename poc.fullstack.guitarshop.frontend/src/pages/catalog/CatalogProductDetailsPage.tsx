@@ -31,21 +31,24 @@ export default function CatalogProductDetailsPage() {
     function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
         const value = parseInt(event.target.value);
 
-        if(value > 0)
+        if(value >= 0)
             setQuantity(value);
     }
 
     function handleUpdateCart() {
+        if(!product)
+            return;
+
         setSubmitting(true);
 
         if(!item || quantity > item.quantity) {
             const updateQuantity = item ? quantity - item.quantity : quantity;
-            APIs.ApiBasket.addProduct(product?.id!, updateQuantity)
+            APIs.ApiBasket.addProduct(product.id!, updateQuantity)
                 .then(basket => setBasket(basket))
                 .finally(() => setSubmitting(false))
         }else{
             const updatedQuantity = item.quantity - quantity;
-            APIs.ApiBasket.removeProduct(product?.id!, updatedQuantity)
+            APIs.ApiBasket.removeProduct(product.id!, updatedQuantity)
                 .then(() => removeItem(product?.id, updatedQuantity))
                 .finally(() => setSubmitting(false))
         }
@@ -103,6 +106,7 @@ export default function CatalogProductDetailsPage() {
                     </Grid>
                     <Grid item xs={6}>
                         <LoadingButton
+                            disabled={item?.quantity === quantity || !item && quantity === 0}
                             loading={submitting}
                             onClick={handleUpdateCart}
                             sx={{height: '55px'}}

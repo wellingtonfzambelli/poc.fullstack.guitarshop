@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, Button, Grid, Link, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { Add, Delete, Remove } from "@mui/icons-material";
 import { useBasketContext } from "../../context/BasketProvider";
 import settings from "../../utils/settings";
@@ -53,8 +53,10 @@ export default function BasketPage() {
                     >
                         <TableCell component="th" scope="row">
                             <Box display='flex' alignItems='center'>
-                                <img src={`${settings.PATH_IMAGES_PRODUCTS}${item.pictureUrl}`} alt={item.name} style={{height:50, marginRight:20}} />
-                                <span>{item.name}</span>
+                                <Link href={`/catalog/${item.productId}`}>
+                                    <img src={`${settings.PATH_IMAGES_PRODUCTS}${item.pictureUrl}`} alt={item.name} style={{height:50, marginRight:20}} />
+                                    <span>{item.name}</span>
+                                </Link>
                             </Box>
                         </TableCell>
                         <TableCell align="right">${item.price.toFixed(2)}</TableCell>
@@ -97,6 +99,15 @@ export default function BasketPage() {
                 <Grid item xs={6} />
                 <Grid item xs={6}>
                     <BasketSummary />
+                    <Link href="/checkout">
+                        <Button
+                            variant='contained'
+                            size='large'
+                            fullWidth
+                        >
+                            Checkout
+                        </Button>
+                    </Link>
                 </Grid>
             </Grid>
         </>
