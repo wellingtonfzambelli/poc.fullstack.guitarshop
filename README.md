@@ -96,7 +96,7 @@ npm install axios
 npm install react-toastify
 ```
 
-11 - Install the Redux library using the terminal
+11 - Install the Redux toolkit using the terminal
 ```VS Code terminal
 npm install @reduxjs/toolkit
 ```
