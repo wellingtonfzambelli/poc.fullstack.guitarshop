@@ -19,7 +19,7 @@ public sealed class BasketController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet]
+    [HttpGet(Name = "GetBasketAsync")]
     public async Task<ActionResult<BasketDto>> GetBasketAsync(CancellationToken ct)
     {
         Basket basket = await RetriveBasketAsync(ct);
@@ -31,7 +31,12 @@ public sealed class BasketController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddItemToBasketAsync(Guid productId, int quantity, CancellationToken ct)
+    public async Task<IActionResult> AddItemToBasketAsync
+    (
+        [FromQuery] Guid productId, 
+        [FromQuery]int quantity, 
+        CancellationToken ct
+    )
     {
         Basket basket = await RetriveBasketAsync(ct);
 
@@ -108,13 +113,13 @@ public sealed class BasketController : ControllerBase
             BuyerId = basket.BuyerId,
             Items = basket.Items.Select(item => new BasketItemDto
             {
-                ProductId = item.Product.Id,
+                ProductId = item.ProductId,
+                Quantity = item.Quantity,
                 Name = item.Product.Name,
                 Price = item.Product.Price,
                 PictureUrl = item.Product.PictureUrl,
                 Type = item.Product.Type,
-                Brand = item.Product.Brand,
-                QuantityInStock = item.Product.QuantityInStock
+                Brand = item.Product.Brand                
             }).ToList()
         };
 }

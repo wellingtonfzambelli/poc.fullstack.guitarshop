@@ -5,6 +5,8 @@ import { router } from "../app/router/Routes";
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 1000));
 
+axios.defaults.withCredentials = true;
+
 axios.interceptors.response.use(async response =>{
     await sleep();
     return response;
@@ -53,6 +55,20 @@ const EndpointsCatalog = {
              .then(response => response.data)
 }
 
+const EndpointsBasket = {
+    getBasket: () =>
+        axios.get(`${settings.API_BASE_URL_GUITAR_SHOP}/basket`)
+             .then(response => response.data),
+    
+    addProduct: (productId: string, quantity: number = 1) =>
+        axios.post(`${settings.API_BASE_URL_GUITAR_SHOP}/basket?productId=${productId}&quantity=${quantity}`, {})
+             .then(response => response.data),
+
+    removeProduct: (productId: string, quantity: number = 1) =>
+        axios.delete(`${settings.API_BASE_URL_GUITAR_SHOP}/basket?productId=${productId}&quatity${quantity}`)
+             .then(response => response.data),             
+}
+
 const EndpointsTestErrors = {
     getBadRequest: () => 
         axios.get(`${settings.API_BASE_URL_GUITAR_SHOP}/mockerror/bad-request`)
@@ -77,6 +93,7 @@ const EndpointsTestErrors = {
 
 const APIs = {
     ApiCatalog: EndpointsCatalog,
+    ApiBasket: EndpointsBasket,
     ApiTestErrors: EndpointsTestErrors
 }
 

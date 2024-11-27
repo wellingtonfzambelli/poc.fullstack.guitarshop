@@ -8,12 +8,27 @@ import { Product } from '../../models/Product';
 import { Avatar, CardHeader } from '@mui/material';
 import { Link } from 'react-router-dom';
 import settings from '../../utils/settings';
+import APIs from '../../services/apis';
+import { LoadingButton } from '@mui/lab';
+import { useState } from 'react';
 
 interface Props{
     product: Product;
 }
 
 export default function ProductCard({product}: Props){
+    const [loading, setLoading] = useState(false);
+    
+    function handleAddItem(productId: string) {
+        setLoading(true);
+        
+        APIs.ApiBasket
+            .addProduct(productId)
+            .finally(() => setLoading(false));
+    }
+
+    //if(loading) return <Loader message='Loading product' />
+    
     return (
         <Card>
             <CardHeader 
@@ -37,7 +52,10 @@ export default function ProductCard({product}: Props){
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Add to cart</Button>
+                <LoadingButton 
+                    loading={loading}  
+                    onClick={() => handleAddItem(product.id)}
+                    size="small">Add to cart</LoadingButton>
                 <Button component={Link} to={`/catalog/${product.id}`} size="small">View</Button>
             </CardActions>
         </Card>
