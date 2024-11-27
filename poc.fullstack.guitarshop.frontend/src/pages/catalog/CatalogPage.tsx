@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from "react";
-import ProductList from "./ProductList";
 import { Product } from "../../models/Product";
 import APIs from "../../services/apis";
 import Loader from "../../app/layout/Loader";
+import ProductList from "../../components/catalog/ProductList";
 
 
 export default function CatalogPage(){

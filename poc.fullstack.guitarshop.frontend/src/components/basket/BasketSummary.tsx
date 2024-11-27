@@ -1,8 +1,18 @@
 import { TableContainer, Paper, Table, TableBody, TableRow, TableCell } from "@mui/material";
+import { useBasketContext } from "../../context/BasketProvider";
 
 export default function BasketSummary() {
-    const subtotal = 0;
-    const deliveryFee = 0;
+    const {basket} = useBasketContext();
+    
+    const subtotal: number = (() => {
+        if(!basket)
+            return 0;
+
+         return basket.items.reduce((prev, current) => 
+            prev + (current.price * current.quantity), 0) ?? 0;
+    })()
+
+    const deliveryFee = subtotal >= 100 ? 0 : 120;
 
     return (
         <>
@@ -11,15 +21,15 @@ export default function BasketSummary() {
                     <TableBody>
                         <TableRow>
                             <TableCell colSpan={2}>Subtotal</TableCell>
-                            <TableCell align="right">{subtotal}</TableCell>
+                            <TableCell align="right">${subtotal.toFixed(2)}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell colSpan={2}>Delivery fee*</TableCell>
-                            <TableCell align="right">{deliveryFee}</TableCell>
+                            <TableCell align="right">${deliveryFee.toFixed(2)}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell colSpan={2}>Total</TableCell>
-                            <TableCell align="right">{subtotal + deliveryFee}</TableCell>
+                            <TableCell align="right">${(deliveryFee + subtotal).toFixed(2)}</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell>

@@ -5,7 +5,7 @@ import settings from "../../utils/settings";
 import { useState } from "react";
 import APIs from "../../services/apis";
 import { LoadingButton } from "@mui/lab";
-import BasketSummary from "./BasketSummary";
+import BasketSummary from "../../components/basket/BasketSummary";
 
 export default function BasketPage() {
     const {basket, setBasket, removeItem} = useBasketContext();
@@ -37,13 +37,13 @@ export default function BasketPage() {
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
-                <TableRow>
-                    <TableCell>Product</TableCell>
-                    <TableCell align="right">Price</TableCell>
-                    <TableCell align="center">Quantity</TableCell>
-                    <TableCell align="right">Subtotal</TableCell>
-                    <TableCell align="right"></TableCell>
-                </TableRow>
+                    <TableRow>
+                        <TableCell>Product</TableCell>
+                        <TableCell align="right">Price</TableCell>
+                        <TableCell align="center">Quantity</TableCell>
+                        <TableCell align="right">Subtotal</TableCell>
+                        <TableCell align="right"></TableCell>
+                    </TableRow>
                 </TableHead>
                 <TableBody>
                 {basket.items.map(item => (

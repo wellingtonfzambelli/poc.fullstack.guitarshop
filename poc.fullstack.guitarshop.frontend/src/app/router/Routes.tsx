@@ -1,13 +1,13 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "../layout/App";
-import HomePage from "../../components/home/HomePage";
-import CatalogPage from "../../components/catalog/CatalogPage";
-import SimulateErrorsPage from "../../components/error/SimulateErrorsPage";
-import ContactPage from "../../components/contact/ContactPage";
-import ProductDetails from "../../components/catalog/ProductDetails";
-import ServerErrorPage from "../../components/error/ServerErrorPage";
-import NotFoundErrorPage from "../../components/error/NotFoundErrorPage";
-import BasketPage from "../../components/basket/BasketPage";
+import HomePage from "../../pages/home/HomePage";
+import SimulateErrorsPage from "../../pages/error/SimulateErrorsPage";
+import ContactPage from "../../pages/contact/ContactPage";
+import ServerErrorPage from "../../pages/error/ServerErrorPage";
+import NotFoundErrorPage from "../../pages/error/NotFoundErrorPage";
+import BasketPage from "../../pages/basket/BasketPage";
+import CatalogPage from "../../pages/catalog/CatalogPage";
+import CatalogProductDetailsPage from "../../pages/catalog/CatalogProductDetailsPage";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
         children: [
             {path: '', element: <HomePage />},
             {path: 'catalog', element: <CatalogPage />},
-            {path: 'catalog/:id', element: <ProductDetails />},
+            {path: 'catalog/:id', element: <CatalogProductDetailsPage />},
             {path: 'contact', element: <ContactPage />},
             {path: 'basket', element: <BasketPage />},
 
