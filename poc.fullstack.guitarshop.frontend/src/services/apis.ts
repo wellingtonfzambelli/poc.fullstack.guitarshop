@@ -62,8 +62,7 @@ const EndpointsBasket = {
     
     addProduct: (productId: string, quantity: number = 1) =>
         axios.post(`${settings.API_BASE_URL_GUITAR_SHOP}/basket?productId=${productId}&quantity=${quantity}`, {})
-             .then(response => response.data)
-             .finally(function(){toast.success('Product added to the cart')}),
+             .then(response => response.data),
 
     removeProduct: (productId: string, quantity: number = 1) =>
         axios.delete(`${settings.API_BASE_URL_GUITAR_SHOP}/basket?productId=${productId}&quantity=${quantity}`)

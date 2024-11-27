@@ -12,6 +12,7 @@ import APIs from '../../services/apis';
 import { LoadingButton } from '@mui/lab';
 import { useState } from 'react';
 import { useBasketContext } from '../../context/BasketProvider';
+import { toast } from 'react-toastify';
 
 interface Props{
     product: Product;
@@ -26,7 +27,10 @@ export default function ProductCard({product}: Props){
         
         APIs.ApiBasket.addProduct(productId)
             .then(basket => setBasket(basket))
-            .finally(() => setLoading(false));
+            .finally(function() {
+                setLoading(false);
+                toast.success('Product added to the cart');
+            });
     }
 
     return (
@@ -37,12 +41,14 @@ export default function ProductCard({product}: Props){
                 titleTypographyProps={{
                     sx: {fontWeight: 'bold', color: 'primary.main'}
                 }}
-            / >
+            />
+
             <CardMedia
                 sx={{ height: 140, backgroundSize: 'contain', bgcolor: 'primary.ligtht' }}
                 image={`${settings.PATH_IMAGES_PRODUCTS}${product.pictureUrl}`}
                 title={product.name}
             />
+
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     $ {product.price.toFixed(2)}
@@ -51,11 +57,13 @@ export default function ProductCard({product}: Props){
                     {product.brand} / {product.type}
                 </Typography>
             </CardContent>
+
             <CardActions>
                 <LoadingButton 
                     loading={loading}  
                     onClick={() => handleAddItem(product.id)}
                     size="small">Add to cart</LoadingButton>
+
                 <Button component={Link} to={`/catalog/${product.id}`} size="small">View</Button>
             </CardActions>
         </Card>
