@@ -32,17 +32,19 @@ public static class ProductExtensions
     public static IQueryable<Product> Filter(
         this IQueryable<Product> query, string brands, string types)
     {
-        var brandList = new List<string>();
-        var typeList = new List<string>();
-
-        if(!string.IsNullOrEmpty(brands))
-            brandList.AddRange(brands.ToLower().Split(',').ToList());
-
         if (!string.IsNullOrEmpty(brands))
-            typeList.AddRange(brands.ToLower().Split(',').ToList());
+        {
+            var brandList = new List<string>();
+            brandList.AddRange(brands.ToLower().Split(',').ToList());
+            query = query.Where(p => brandList.Count() == 0 || brandList.Contains(p.Brand.ToLower()));
+        }
 
-        query = query.Where(p => brandList.Count() == 0 || brandList.Contains(p.Brand.ToLower()));
-        query = query.Where(p => typeList.Count() == 0 || typeList.Contains(p.Type.ToLower()));
+        if (!string.IsNullOrEmpty(types))
+        {
+            var typeList = new List<string>();
+            typeList.AddRange(types.ToLower().Split(',').ToList());
+            query = query.Where(p => typeList.Count() == 0 || typeList.Contains(p.Type.ToLower()));
+        }
 
         return query;
     }

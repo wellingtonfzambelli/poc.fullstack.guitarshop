@@ -4,7 +4,7 @@ import settings from "../../utils/settings";
 import BasketSummary from "../../components/basket/BasketSummary";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { LoadingButton } from "@mui/lab";
-import { addBasketItemAsync, removeBasketItemAsync } from "../../redux/basketSlice";
+import { removeBasketItemAsync, addBasketItemAsync } from "../../redux/basketSlice";
 
 export default function BasketPage() {
     const {basket, status} = useAppSelector(state => state.basket);

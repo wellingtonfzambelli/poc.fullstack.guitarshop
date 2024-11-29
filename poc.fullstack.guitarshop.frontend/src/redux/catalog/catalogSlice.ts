@@ -1,15 +1,36 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import APIs from "../services/apis";
-import { Product } from "../models/Product";
-import { RootState } from "./store";
+import APIs from "../../services/apis";
+import { Product } from "../../models/Product";
+import { RootState } from "../store";
+import { CatalogState } from "./CatalogState";
+import { ProductPaginationParams } from "../../models/ProductPaginationParams";
 
 const productsAdapter = createEntityAdapter<Product>();
 
-export const fetchProductsAsync = createAsyncThunk<Product[]>(
+function getAxiosParams(productPaginationParams: ProductPaginationParams) {
+    const params = new URLSearchParams();
+    params.append('pageNumber', productPaginationParams.pageNumber.toString());
+    params.append('pageSize', productPaginationParams.pageSize.toString());
+    params.append('orderBy', productPaginationParams.orderBy.toString());
+
+    if(productPaginationParams.searchTerm)
+        params.append('searchTerm', productPaginationParams.searchTerm);
+    if(productPaginationParams.brands)
+        params.append('brands', productPaginationParams.brands.toString());
+    if(productPaginationParams.types)
+        params.append('types', productPaginationParams.types.toString());
+
+    return params;
+}
+
+export const fetchProductsAsync = createAsyncThunk<Product[], void, {state: RootState}>(
     'catalog/fetchProductsAsync',
     async (_, thunkAPI) => {
+        const params = getAxiosParams(thunkAPI.getState().catalog.productPaginationParams);
+
         try {
-            return await APIs.ApiCatalog.getProducts();
+            
+            return await APIs.ApiCatalog.getProducts(params);
         }
         catch(error: unknown){
             if (error instanceof Error) {
@@ -49,16 +70,34 @@ export const fetchFiltersAsync = createAsyncThunk(
     }
 )
 
+function initParams(){
+    return {
+        pageNumber: 1,
+        pageSize: 6,
+        orderBy: 'name',
+        searchTerm: ''
+    }
+}
+
 export const catalogSlice = createSlice({
     name: 'catalog',
-    initialState: productsAdapter.getInitialState({
+    initialState: productsAdapter.getInitialState<CatalogState>({
         productsLoaded: false,
         filtersLoaded: false,
+        status: 'idle',
         brands: [],
         types: [],
-        status: 'idle'
+        productPaginationParams: initParams()
     }),
-    reducers:{},
+    reducers:{
+        setProductPaginationParams: (state, action) =>{
+            state.productsLoaded = false;
+            state.productPaginationParams = {...state.productPaginationParams, ...action.payload};
+        },
+        resetProductPaginationParams: (state) => {
+            state.productPaginationParams = initParams();
+        }
+    },
     extraReducers:(builder => {
         builder.addCase(fetchProductsAsync.pending, (state) =>{
             state.status = 'pendingFetchProducts';
@@ -103,3 +142,4 @@ export const catalogSlice = createSlice({
 })
 
 export const productSelectors = productsAdapter.getSelectors((state: RootState) => state.catalog);
+export const {setProductPaginationParams, resetProductPaginationParams} = catalogSlice.actions;

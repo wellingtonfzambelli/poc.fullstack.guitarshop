@@ -4,6 +4,7 @@ using poc.fullstack.guitarshop.api.Data;
 using poc.fullstack.guitarshop.api.Dto;
 using poc.fullstack.guitarshop.api.Entities;
 using poc.fullstack.guitarshop.api.Extensions;
+using poc.fullstack.guitarshop.api.Helper.Pagination;
 using System.Text.Json;
 
 namespace poc.fullstack.guitarshop.api.Controllers;
@@ -28,7 +29,7 @@ public sealed class ProductController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IList<Product>>> GetProductsAsync
     (
-        [FromQuery]ProductParamsDto productParamsDto,
+        [FromQuery]ProductPaginationParamsDto productParamsDto,
         CancellationToken ct
     )
     {

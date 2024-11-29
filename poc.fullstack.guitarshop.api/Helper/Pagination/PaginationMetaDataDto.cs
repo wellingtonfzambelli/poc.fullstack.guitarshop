@@ -1,4 +1,4 @@
-﻿namespace poc.fullstack.guitarshop.api.Dto;
+﻿namespace poc.fullstack.guitarshop.api.Helper.Pagination;
 
 public sealed class PaginationMetaDataDto
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace poc.fullstack.guitarshop.api.Dto;
+namespace poc.fullstack.guitarshop.api.Helper.Pagination;
 
 public sealed class PagedList<T> : List<T>
 {
@@ -21,9 +21,9 @@ public sealed class PagedList<T> : List<T>
 
     public static async Task<PagedList<T>> ToPagedList
     (
-        IQueryable<T> query, 
-        int pageNumber, 
-        int pageSize, 
+        IQueryable<T> query,
+        int pageNumber,
+        int pageSize,
         CancellationToken ct
     )
     {

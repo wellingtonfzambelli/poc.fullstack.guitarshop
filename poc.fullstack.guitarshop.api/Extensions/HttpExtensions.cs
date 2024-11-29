@@ -1,5 +1,5 @@
-﻿using poc.fullstack.guitarshop.api.Dto;
-using poc.fullstack.guitarshop.api.Entities;
+﻿using poc.fullstack.guitarshop.api.Entities;
+using poc.fullstack.guitarshop.api.Helper.Pagination;
 using System.Text.Json;
 
 namespace poc.fullstack.guitarshop.api.Extensions;

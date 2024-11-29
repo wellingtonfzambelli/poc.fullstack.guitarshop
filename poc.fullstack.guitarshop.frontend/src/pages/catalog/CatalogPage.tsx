@@ -3,8 +3,10 @@ import { useEffect} from "react";
 import Loader from "../../components/loading/Loader";
 import ProductList from "../../components/catalog/ProductList";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { fetchFiltersAsync, fetchProductsAsync, productSelectors } from "../../redux/catalogSlice";
-import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, Pagination, Paper, Radio, RadioGroup, TextField, Typography } from "@mui/material";
+import { fetchFiltersAsync, fetchProductsAsync, productSelectors, setProductPaginationParams } from "../../redux/catalog/catalogSlice";
+import { Box, Checkbox, FormControlLabel, FormGroup, Grid, Pagination, Paper, Typography } from "@mui/material";
+import ProductSearch from "../../components/catalog/ProductSearch";
+import RadioButtonSearch from "../../components/catalog/RadioButtonSearch";
 
 const sortOptions =[
     {value: 'name', label: 'Alphabetical'},
@@ -14,7 +16,7 @@ const sortOptions =[
 
 export default function CatalogPage(){
     const products = useAppSelector(productSelectors.selectAll);
-    const {productsLoaded, status, filtersLoaded, brands, types} = useAppSelector(state => state.catalog);
+    const {productsLoaded, status, filtersLoaded, brands, types, productPaginationParams} = useAppSelector(state => state.catalog);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -36,21 +38,15 @@ export default function CatalogPage(){
         <Grid container spacing={4}>
             <Grid item xs={3}>
                 <Paper sx={{mb: 2}}>
-                    <TextField 
-                        label='Search products'
-                        variant='outlined'
-                        fullWidth
-                    />
+                    <ProductSearch></ProductSearch>
                 </Paper>
 
                 <Paper sx={{mb:2, p: 2}}>
-                    <FormControl component='fieldset'>
-                        <RadioGroup>
-                            { sortOptions.map(({value, label}) =>(
-                                <FormControlLabel value={value} control={<Radio />} label={label} />
-                            ))}
-                        </RadioGroup>
-                    </FormControl>
+                    <RadioButtonSearch 
+                        selectedValue={productPaginationParams.orderBy}
+                        options={sortOptions}
+                        onChange={(e) => dispatch(setProductPaginationParams({orderBy: e.target.value}))}
+                    />
                 </Paper>
 
                 <Paper sx={{mb: 2, p:2}}>

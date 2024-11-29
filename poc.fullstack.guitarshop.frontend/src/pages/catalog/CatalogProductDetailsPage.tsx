@@ -6,8 +6,8 @@ import NotFoundErrorPage from "../error/NotFoundErrorPage";
 import Loader from "../../components/loading/Loader";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { fetchProductAsync, productSelectors } from "../../redux/catalog/catalogSlice";
 import { addBasketItemAsync, removeBasketItemAsync } from "../../redux/basketSlice";
-import { fetchProductAsync, productSelectors } from "../../redux/catalogSlice";
 
 export default function CatalogProductDetailsPage() {
     const {basket, status} = useAppSelector(state => state.basket);

@@ -46,8 +46,8 @@ axios.interceptors.response.use(async response =>{
 })
 
 const EndpointsCatalog = {
-    getProducts: () => 
-        axios.get(`${settings.API_BASE_URL_GUITAR_SHOP}/product`)
+    getProducts: (params?: URLSearchParams) => 
+        axios.get(`${settings.API_BASE_URL_GUITAR_SHOP}/product`, {params})
              .then(response => response.data),
 
     getDetails: (id: string | undefined) => 
