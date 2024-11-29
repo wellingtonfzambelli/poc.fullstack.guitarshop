@@ -8,30 +8,17 @@ import { Product } from '../../models/Product';
 import { Avatar, CardHeader } from '@mui/material';
 import { Link } from 'react-router-dom';
 import settings from '../../utils/settings';
-import APIs from '../../services/apis';
 import { LoadingButton } from '@mui/lab';
-import { useState } from 'react';
-import { useBasketContext } from '../../context/BasketProvider';
-import { toast } from 'react-toastify';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { addBasketItemAsync } from '../../redux/basketSlice';
 
 interface Props{
     product: Product;
 }
 
 export default function ProductCard({product}: Props){
-    const [loading, setLoading] = useState(false);
-    const {setBasket} = useBasketContext();
-
-    function handleAddItem(productId: string) {
-        setLoading(true);
-        
-        APIs.ApiBasket.addProduct(productId)
-            .then(basket => setBasket(basket))
-            .finally(function() {
-                setLoading(false);
-                toast.success('Product added to the cart');
-            });
-    }
+    const {status} = useAppSelector(state => state.basket);
+    const dispatch = useAppDispatch();
 
     return (
         <Card>
@@ -59,10 +46,13 @@ export default function ProductCard({product}: Props){
             </CardContent>
 
             <CardActions>
-                <LoadingButton 
-                    loading={loading}  
-                    onClick={() => handleAddItem(product.id)}
-                    size="small">Add to cart</LoadingButton>
+                <LoadingButton
+                    loading={status.includes('pendingAddItem'+product.id)}  
+                    onClick={() => dispatch(addBasketItemAsync({productId: product.id}))}
+                    size="small"
+                >
+                        Add to cart
+                </LoadingButton>
 
                 <Button component={Link} to={`/catalog/${product.id}`} size="small">View</Button>
             </CardActions>

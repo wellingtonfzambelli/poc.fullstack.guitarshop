@@ -1,32 +1,31 @@
 import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Product } from "../../models/Product";
-import APIs from "../../services/apis";
 import settings from "../../utils/settings";
 import NotFoundErrorPage from "../error/NotFoundErrorPage";
-import Loader from "../../app/layout/Loader";
-import { useBasketContext } from "../../context/BasketProvider";
+import Loader from "../../components/loading/Loader";
 import { LoadingButton } from "@mui/lab";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { addBasketItemAsync, removeBasketItemAsync } from "../../redux/basketSlice";
+import { fetchProductAsync, productSelectors } from "../../redux/catalogSlice";
 
 export default function CatalogProductDetailsPage() {
-    const {basket, setBasket, removeItem} = useBasketContext();
+    const {basket, status} = useAppSelector(state => state.basket);
+    const dispatch = useAppDispatch();
     const {id} = useParams<{id: string}>();
-    const [product, setProduct] = useState<Product | null>(null);
-    const [loading, setLoading] = useState(true);
+    const product = useAppSelector(state => productSelectors.selectById(state, id!));
+    const {status: productStatus} = useAppSelector(state => state.catalog);
     const [quantity, setQuantity] = useState(0);
-    const [submitting, setSubmitting] = useState(false);
     const item = basket?.items.find(i => i.productId === product?.id);
 
     useEffect(() =>{
-        if(item) {
+        if(item)
             setQuantity(item.quantity);
-        }
 
-        APIs.ApiCatalog.getDetails(id)
-            .then(response => setProduct(response))
-            .finally(() => setLoading(false));
-    }, [id, item])
+        if(!product)
+            dispatch(fetchProductAsync(id!))
+
+    }, [id, item, dispatch, product])
 
     function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
         const value = parseInt(event.target.value);
@@ -39,22 +38,17 @@ export default function CatalogProductDetailsPage() {
         if(!product)
             return;
 
-        setSubmitting(true);
-
         if(!item || quantity > item.quantity) {
             const updateQuantity = item ? quantity - item.quantity : quantity;
-            APIs.ApiBasket.addProduct(product.id!, updateQuantity)
-                .then(basket => setBasket(basket))
-                .finally(() => setSubmitting(false))
+            dispatch(addBasketItemAsync({productId: product?.id, quantity: updateQuantity}))
         }else{
             const updatedQuantity = item.quantity - quantity;
-            APIs.ApiBasket.removeProduct(product.id!, updatedQuantity)
-                .then(() => removeItem(product?.id, updatedQuantity))
-                .finally(() => setSubmitting(false))
+            dispatch(removeBasketItemAsync({productId: product?.id, quantity: updatedQuantity}))
         }
     }
 
-    if(loading) return <Loader message='Loading product' />
+    if(productStatus.includes('pending')) 
+        return <Loader message='Loading product...' />
 
     if(!product) return <NotFoundErrorPage />
 
@@ -106,8 +100,8 @@ export default function CatalogProductDetailsPage() {
                     </Grid>
                     <Grid item xs={6}>
                         <LoadingButton
-                            disabled={item?.quantity === quantity || !item && quantity === 0}
-                            loading={submitting}
+                            disabled={item?.quantity === quantity}
+                            loading={status.includes('pending')}
                             onClick={handleUpdateCart}
                             sx={{height: '55px'}}
                             color='primary'

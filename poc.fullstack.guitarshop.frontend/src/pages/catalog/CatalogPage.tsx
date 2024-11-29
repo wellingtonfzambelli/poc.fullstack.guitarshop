@@ -1,22 +1,23 @@
 
-import { useEffect, useState } from "react";
-import { Product } from "../../models/Product";
-import APIs from "../../services/apis";
-import Loader from "../../app/layout/Loader";
+import { useEffect} from "react";
+import Loader from "../../components/loading/Loader";
 import ProductList from "../../components/catalog/ProductList";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { fetchProductsAsync, productSelectors } from "../../redux/catalogSlice";
 
 
 export default function CatalogPage(){
-    const [products, setProduct] = useState<Product[]>([]);
-    const [loading, setLoading] = useState(true);
+    const products = useAppSelector(productSelectors.selectAll);
+    const {productsLoaded, status} = useAppSelector(state => state.catalog);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-      APIs.ApiCatalog.getProducts()
-        .then(response => setProduct(response))
-        .finally(() => setLoading(false));
-    }, []);
+      if(!productsLoaded)
+        dispatch(fetchProductsAsync());
+    }, [productsLoaded, dispatch]);
 
-    if(loading) return <Loader message='Loading products...' />;    
+    if(status.includes('pending')) 
+        return <Loader message='Loading products...' />;    
 
     return (
         <>

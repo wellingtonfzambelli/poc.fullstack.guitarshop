@@ -1,36 +1,17 @@
 import { Box, Button, Grid, Link, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { Add, Delete, Remove } from "@mui/icons-material";
-import { useBasketContext } from "../../context/BasketProvider";
 import settings from "../../utils/settings";
-import { useState } from "react";
-import APIs from "../../services/apis";
-import { LoadingButton } from "@mui/lab";
 import BasketSummary from "../../components/basket/BasketSummary";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { LoadingButton } from "@mui/lab";
+import { addBasketItemAsync, removeBasketItemAsync } from "../../redux/basketSlice";
 
 export default function BasketPage() {
-    const {basket, setBasket, removeItem} = useBasketContext();
-    const [status, setStatus] = useState({
-        loading: false,
-        name: ''
-    });
+    const {basket, status} = useAppSelector(state => state.basket);
+    const dispatch = useAppDispatch();
 
-    function handleAddItem(productId: string, name: string) {
-        setStatus({loading: true, name: name});
-
-        APIs.ApiBasket.addProduct(productId)
-            .then(basket => setBasket(basket))
-            .finally(() => setStatus({loading: false, name: ''}))
-    }
-
-    function handleRemoveItem(productId: string, quantity = 1, name: string) {
-        setStatus({loading: true, name: name});
-
-        APIs.ApiBasket.removeProduct(productId, quantity)
-            .then(() => removeItem(productId, quantity))
-            .finally(() => setStatus({loading: false, name: ''}))
-    }
-
-    if(!basket) return <Typography variant="h3">Your basket is empty</Typography>
+    if(!basket) 
+        return <Typography variant="h3">Your basket is empty</Typography>
 
     return (
         <>
@@ -62,8 +43,8 @@ export default function BasketPage() {
                         <TableCell align="right">${item.price.toFixed(2)}</TableCell>
                         <TableCell align="center">
                             <LoadingButton 
-                                loading={status.loading && status.name === 'remove' + item.productId} 
-                                onClick={() => handleRemoveItem(item.productId, 1, 'remove' + item.productId)} 
+                                loading={status === ('pendingRemoveItem' + item.productId + 'remove')} 
+                                onClick={() => dispatch(removeBasketItemAsync({productId: item.productId, quantity: 1, name: 'remove'}))} 
                                 color='error'
                             >
                                 <Remove />
@@ -72,8 +53,8 @@ export default function BasketPage() {
                             {item.quantity}
 
                             <LoadingButton 
-                                loading={status.loading && status.name === 'add' + item.productId} 
-                                onClick={() => handleAddItem(item.productId, 'add' + item.productId)} 
+                                loading={status === ('pendingAddItem' + item.productId)} 
+                                onClick={() => dispatch(addBasketItemAsync({productId: item.productId, quantity: item.quantity}))} 
                                 color='secondary'
                             >
                                 <Add />
@@ -82,8 +63,8 @@ export default function BasketPage() {
                         <TableCell align="right">${(item.price * item.quantity).toFixed(2)}</TableCell>
                         <TableCell align="right">
                             <LoadingButton 
-                                loading={status.loading && status.name === 'delete' + item.productId} 
-                                onClick={() => handleRemoveItem(item.productId, item.quantity, 'delete' + item.productId)} 
+                                loading={status === ('pendingRemoveItem' + item.productId + 'delete')} 
+                                onClick={() => dispatch(removeBasketItemAsync({productId: item.productId, quantity: item.quantity, name: 'delete'}))} 
                                 color="error"
                             >
                                 <Delete />

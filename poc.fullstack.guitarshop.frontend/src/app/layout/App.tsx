@@ -3,13 +3,14 @@ import { Container, createTheme, CssBaseline, ThemeProvider } from "@mui/materia
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { useBasketContext } from "../../context/BasketProvider";
 import APIs from "../../services/apis";
-import Loader from "./Loader";
+import Loader from "../../components/loading/Loader";
 import { getCookie } from "../../utils/commom";
+import { useAppDispatch } from "../../redux/store";
+import { setBasket } from "../../redux/basketSlice";
 
 function App() {
-  const {setBasket} = useBasketContext();
+  const dispatch = useAppDispatch();
   const[loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,12 +18,12 @@ function App() {
 
     if(buyerId) {
       APIs.ApiBasket.getBasket()
-        .then(basket => setBasket(basket))
+        .then(basket => dispatch(setBasket(basket)))
         .finally(() => setLoading(false));
     } else {
       setLoading(false);
     }
-  }, [setBasket])
+  }, [dispatch])
 
   const [darkMode, setDarkMode] = useState(false);
   const paletteType = darkMode ? 'dark' : 'light';
@@ -41,7 +42,8 @@ function App() {
     
   }
 
-  if(loading) return <Loader message="App is loading" />
+  if(loading) 
+    return <Loader message="App is loading" />
 
   return (
     <ThemeProvider theme={theme}>

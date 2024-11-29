@@ -1,8 +1,8 @@
 import { TableContainer, Paper, Table, TableBody, TableRow, TableCell } from "@mui/material";
-import { useBasketContext } from "../../context/BasketProvider";
+import { useAppSelector } from "../../redux/store";
 
 export default function BasketSummary() {
-    const {basket} = useBasketContext();
+    const {basket} = useAppSelector(state => state.basket);
     
     const subtotal: number = (() => {
         if(!basket)

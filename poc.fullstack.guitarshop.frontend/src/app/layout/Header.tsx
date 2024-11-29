@@ -2,7 +2,7 @@ import { ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Box, IconButton, List, ListItem, Toolbar, Typography } from "@mui/material";
 import Switch from '@mui/material/Switch';
 import { Link, NavLink } from "react-router-dom";
-import { useBasketContext } from "../../context/BasketProvider";
+import { useAppSelector } from "../../redux/store";
 
 const midMenuLinks = [
     {title: 'catalog', path: '/catalog'},
@@ -32,7 +32,7 @@ interface Props{
 }
 
 export default function Header({darkMode, handleThemeChange}: Props){
-    const {basket} = useBasketContext();
+    const {basket} = useAppSelector(state => state.basket);
     const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
 
     return (

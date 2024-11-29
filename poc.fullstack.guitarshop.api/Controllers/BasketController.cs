@@ -45,7 +45,7 @@ public sealed class BasketController : ControllerBase
 
         Product product = await _context.Products.FindAsync(productId, ct);
         if (product is null)
-            return NotFound();
+            return BadRequest(new ProblemDetails { Title =  "Product not found" });
 
         basket.AddItem(product, quantity);
 
