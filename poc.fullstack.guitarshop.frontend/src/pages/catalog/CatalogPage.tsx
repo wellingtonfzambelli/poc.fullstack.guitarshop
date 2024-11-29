@@ -4,9 +4,10 @@ import Loader from "../../components/loading/Loader";
 import ProductList from "../../components/catalog/ProductList";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { fetchFiltersAsync, fetchProductsAsync, productSelectors, setProductPaginationParams } from "../../redux/catalog/catalogSlice";
-import { Box, Checkbox, FormControlLabel, FormGroup, Grid, Pagination, Paper, Typography } from "@mui/material";
-import ProductSearch from "../../components/catalog/ProductSearch";
+import { Box, Grid, Pagination, Paper, Typography } from "@mui/material";
+import ProductSearch from "../../components/catalog/ProductSearchFilter";
 import RadioButtonSearch from "../../components/catalog/RadioButtonSearch";
+import CheckBoxFilter from "../../components/catalog/CheckBoxFilter";
 
 const sortOptions =[
     {value: 'name', label: 'Alphabetical'},
@@ -50,19 +51,19 @@ export default function CatalogPage(){
                 </Paper>
 
                 <Paper sx={{mb: 2, p:2}}>
-                    <FormGroup>
-                        {brands.map(brand => (
-                            <FormControlLabel control={<Checkbox />} label={brand} key={brand} />
-                        ))}
-                    </FormGroup>
+                    <CheckBoxFilter 
+                        items={brands}
+                        checked={productPaginationParams.brands}
+                        onChange={(items: string[]) => dispatch(setProductPaginationParams({brands: items }))}
+                    />
                 </Paper>
 
                 <Paper sx={{mb: 2, p:2}}>
-                    <FormGroup>
-                        {types.map(type => (
-                            <FormControlLabel control={<Checkbox />} label={type} key={type} />
-                        ))}
-                    </FormGroup>
+                    <CheckBoxFilter 
+                        items={types}
+                        checked={productPaginationParams.types}
+                        onChange={(items: string[]) => dispatch(setProductPaginationParams({types: items }))}
+                    />
                 </Paper>
             </Grid>
             <Grid item xs={9}>
