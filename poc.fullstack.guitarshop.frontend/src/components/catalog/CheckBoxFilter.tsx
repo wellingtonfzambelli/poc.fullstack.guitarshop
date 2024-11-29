@@ -11,9 +11,9 @@ export default function CheckBoxFilter({items, checked, onChange}: Props) {
     const [checkedItems, setCheckedItems] = useState(checked || [])
 
     function handleChecked(value: string) {
-        const currentIndex = checkedItems.findIndex(item => item === value);
         let newChecked: string[] = [];
-        if(currentIndex - 1)
+        
+        if(checkedItems.filter(item => item === value).length == 0)
             newChecked = [...checkedItems, value];
         else
             newChecked = checkedItems.filter(item => item !== value);

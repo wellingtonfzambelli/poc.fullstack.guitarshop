@@ -11,7 +11,7 @@ export default function RadioButtonSearch({options, onChange, selectedValue}: Pr
         <FormControl component='fieldset'>
             <RadioGroup onChange={onChange} value={selectedValue}>
                 { options.map(({value, label}) =>(
-                    <FormControlLabel value={value} control={<Radio />} label={label} />
+                    <FormControlLabel key={value} value={value} control={<Radio />} label={label} />
                 ))}
             </RadioGroup>
         </FormControl>

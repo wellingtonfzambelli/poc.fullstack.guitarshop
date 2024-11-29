@@ -15,9 +15,9 @@ function getAxiosParams(productPaginationParams: ProductPaginationParams) {
 
     if(productPaginationParams.searchTerm)
         params.append('searchTerm', productPaginationParams.searchTerm);
-    if(productPaginationParams.brands)
+    if(productPaginationParams.brands.length > 0)
         params.append('brands', productPaginationParams.brands.toString());
-    if(productPaginationParams.types)
+    if(productPaginationParams.types.length > 0)
         params.append('types', productPaginationParams.types.toString());
 
     return params;
@@ -29,8 +29,10 @@ export const fetchProductsAsync = createAsyncThunk<Product[], void, {state: Root
         const params = getAxiosParams(thunkAPI.getState().catalog.productPaginationParams);
 
         try {
-            
-            return await APIs.ApiCatalog.getProducts(params);
+            const response = await APIs.ApiCatalog.getProducts(params);
+            thunkAPI.dispatch(setPaginationMetaData(response.paginationMetaData));
+
+            return response.items;
         }
         catch(error: unknown){
             if (error instanceof Error) {
@@ -75,7 +77,9 @@ function initParams(){
         pageNumber: 1,
         pageSize: 6,
         orderBy: 'name',
-        searchTerm: ''
+        searchTerm: '',
+        brands: [],
+        types: []
     }
 }
 
@@ -87,12 +91,20 @@ export const catalogSlice = createSlice({
         status: 'idle',
         brands: [],
         types: [],
-        productPaginationParams: initParams()
+        productPaginationParams: initParams(),
+        paginationMetaData: null
     }),
     reducers:{
         setProductPaginationParams: (state, action) =>{
             state.productsLoaded = false;
-            state.productPaginationParams = {...state.productPaginationParams, ...action.payload};
+            state.productPaginationParams = {...state.productPaginationParams, ...action.payload, pageNumber: 1};
+        },
+        setPageNumber: (state, action) => {
+            state.productsLoaded = false;
+            state.productPaginationParams = {...state.productPaginationParams, ...action.payload, pageNumber: 1}
+        },
+        setPaginationMetaData: (state, action) => {
+            state.paginationMetaData = action.payload;
         },
         resetProductPaginationParams: (state) => {
             state.productPaginationParams = initParams();
@@ -142,4 +154,4 @@ export const catalogSlice = createSlice({
 })
 
 export const productSelectors = productsAdapter.getSelectors((state: RootState) => state.catalog);
-export const {setProductPaginationParams, resetProductPaginationParams} = catalogSlice.actions;
+export const {setProductPaginationParams, resetProductPaginationParams, setPaginationMetaData, setPageNumber} = catalogSlice.actions;

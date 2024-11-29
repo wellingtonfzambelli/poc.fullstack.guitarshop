@@ -1,3 +1,4 @@
+import { PaginationMetaData } from "../../models/Pagination";
 import { ProductPaginationParams } from "../../models/ProductPaginationParams";
 
 export interface CatalogState{
@@ -7,4 +8,5 @@ export interface CatalogState{
     brands: string[];
     types: string[];
     productPaginationParams: ProductPaginationParams;
+    paginationMetaData: PaginationMetaData | null;
 }
