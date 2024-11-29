@@ -5,11 +5,14 @@
 __Frontend__
 - ReactJs
 - Vite
-- Library -> Axios
+- Library -> Redux _(https://redux.js.org)_
+- Library -> Redux Toolkit _(https://redux-toolkit.js.org)_
+- Library -> Axios _(https://axios-http.com)_
 - Library -> Material UI _(https://mui.com/material-ui)_
 - Library -> React Router _(https://reactrouter.com)_
 - Library -> React Toastify _(https://www.npmjs.com/package/react-toastify)_
 - Visual Studio Code -> Extensions (Simple React Snippets, ESLint, Material Icon Theme, Prettier, StandardJS)
+- Browser Plugins -> React Developer Tools
 
 __Backend__
 - .NET 8
@@ -93,4 +96,9 @@ npm install axios
 10 - Install the Toastify library using the terminal
 ```VS Code terminal
 npm install react-toastify
+```
+
+11 - Install the Redux toolkit using the terminal
+```VS Code terminal
+npm install @reduxjs/toolkit
 ```
