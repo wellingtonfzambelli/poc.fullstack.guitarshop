@@ -52,7 +52,11 @@ const EndpointsCatalog = {
 
     getDetails: (id: string | undefined) => 
         axios.get(`${settings.API_BASE_URL_GUITAR_SHOP}/product/${id}`)
-             .then(response => response.data)
+             .then(response => response.data),
+
+    fetchFilters: () =>
+        axios.get(`${settings.API_BASE_URL_GUITAR_SHOP}/product/filters`)
+             .then(response => response.data),
 }
 
 const EndpointsBasket = {
