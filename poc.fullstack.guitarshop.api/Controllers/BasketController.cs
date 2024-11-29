@@ -58,7 +58,8 @@ public sealed class BasketController : ControllerBase
     }
 
     [HttpDelete]
-    public async Task<IActionResult> RemoveBasketItemAsync(Guid productId, int quantity, CancellationToken ct)
+    public async Task<IActionResult> RemoveBasketItemAsync(
+        Guid productId, int quantity, CancellationToken ct)
     {
         var basket = await RetriveBasketAsync(ct);
 
