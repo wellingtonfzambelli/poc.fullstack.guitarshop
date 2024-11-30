@@ -46,6 +46,9 @@ if (app.Environment.IsDevelopment())
     }
 }
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 // CORS
 app.UseCors(opt =>
 {
@@ -57,5 +60,6 @@ app.UseCors(opt =>
 
 app.UseAuthorization();
 app.MapControllers();
+app.MapFallbackToController("Index", "Fallback");
 
 app.Run();

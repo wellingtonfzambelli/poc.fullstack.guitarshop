@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react-swc'
 // https://vite.dev/config/
 export default defineConfig({
   build:{
-    outDir: '../API/wwwroot'
+    outDir: '../poc.fullstack.guitarshop.api/wwwroot'
   },
   server:{
     port: 3000
