@@ -7,10 +7,9 @@ import Typography from '@mui/material/Typography';
 import { Product } from '../../models/Product';
 import { Avatar, CardHeader } from '@mui/material';
 import { Link } from 'react-router-dom';
-import settings from '../../utils/settings';
 import { LoadingButton } from '@mui/lab';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { addBasketItemAsync } from '../../redux/basketSlice';
+import { addBasketItemAsync } from '../../redux/basket/basketSlice';
 
 interface Props{
     product: Product;
@@ -32,7 +31,7 @@ export default function ProductCard({product}: Props){
 
             <CardMedia
                 sx={{ height: 140, backgroundSize: 'contain', bgcolor: 'primary.ligtht' }}
-                image={`${settings.PATH_IMAGES_PRODUCTS}${product.pictureUrl}`}
+                image={`${import.meta.env.VITE_PATH_IMAGES_PRODUCTS}${product.pictureUrl}`}
                 title={product.name}
             />
 

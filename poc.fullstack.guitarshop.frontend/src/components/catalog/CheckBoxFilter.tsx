@@ -24,7 +24,7 @@ export default function CheckBoxFilter({items, checked, onChange}: Props) {
 
     return (
         <FormGroup>
-            {items.map(item => (
+            {items?.map(item => (
                 <FormControlLabel 
                     label={item} 
                     key={item}

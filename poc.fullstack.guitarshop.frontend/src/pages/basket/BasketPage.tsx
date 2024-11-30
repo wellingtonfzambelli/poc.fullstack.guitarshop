@@ -1,10 +1,9 @@
 import { Box, Button, Grid, Link, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { Add, Delete, Remove } from "@mui/icons-material";
-import settings from "../../utils/settings";
 import BasketSummary from "../../components/basket/BasketSummary";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { LoadingButton } from "@mui/lab";
-import { removeBasketItemAsync, addBasketItemAsync } from "../../redux/basketSlice";
+import { removeBasketItemAsync, addBasketItemAsync } from "../../redux/basket/basketSlice";
 
 export default function BasketPage() {
     const {basket, status} = useAppSelector(state => state.basket);
@@ -35,7 +34,7 @@ export default function BasketPage() {
                         <TableCell component="th" scope="row">
                             <Box display='flex' alignItems='center'>
                                 <Link href={`/catalog/${item.productId}`}>
-                                    <img src={`${settings.PATH_IMAGES_PRODUCTS}${item.pictureUrl}`} alt={item.name} style={{height:50, marginRight:20}} />
+                                    <img src={`${import.meta.env.VITE_PATH_IMAGES_PRODUCTS}${item.pictureUrl}`} alt={item.name} style={{height:50, marginRight:20}} />
                                     <span>{item.name}</span>
                                 </Link>
                             </Box>

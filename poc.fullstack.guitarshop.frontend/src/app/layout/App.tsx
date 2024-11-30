@@ -7,7 +7,7 @@ import APIs from "../../services/apis";
 import Loader from "../../components/loading/Loader";
 import { getCookie } from "../../utils/commom";
 import { useAppDispatch } from "../../redux/store";
-import { setBasket } from "../../redux/basketSlice";
+import { setBasket } from "../../redux/basket/basketSlice";
 
 function App() {
   const dispatch = useAppDispatch();

@@ -1,13 +1,12 @@
 import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import settings from "../../utils/settings";
 import NotFoundErrorPage from "../error/NotFoundErrorPage";
 import Loader from "../../components/loading/Loader";
 import { LoadingButton } from "@mui/lab";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { fetchProductAsync, productSelectors } from "../../redux/catalog/catalogSlice";
-import { addBasketItemAsync, removeBasketItemAsync } from "../../redux/basketSlice";
+import { addBasketItemAsync, removeBasketItemAsync } from "../../redux/basket/basketSlice";
 
 export default function CatalogProductDetailsPage() {
     const {basket, status} = useAppSelector(state => state.basket);
@@ -55,7 +54,7 @@ export default function CatalogProductDetailsPage() {
     return (
         <Grid container spacing={6}>
             <Grid item xs={6}>
-                <img src={`${settings.PATH_IMAGES_PRODUCTS}${product.pictureUrl}`} alt={product.name} style={{width: '100%'}} />
+                <img src={`${import.meta.env.VITE_PATH_IMAGES_PRODUCTS}${product.pictureUrl}`} alt={product.name} style={{width: '100%'}} />
             </Grid>
             <Grid item xs={6}>
                 <Typography variant="h3">{product.name}</Typography>
