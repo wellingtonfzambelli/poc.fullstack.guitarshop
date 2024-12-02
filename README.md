@@ -114,6 +114,10 @@ Inside the Resource Group, add a Web App
 
 ![image](https://github.com/user-attachments/assets/905d9bb1-c8da-4260-aa90-7fac0c6e8657)
 
+Inside the Resource Group, add the Azure MySQL
+
+![image](https://github.com/user-attachments/assets/447ca934-fd49-42c7-bc75-af96ce299da8)
+
 
 Choose your Azure Application
 ![image](https://github.com/user-attachments/assets/8b9ca9bd-0b80-4d06-b157-e21103beae6d)
