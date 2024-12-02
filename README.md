@@ -2,6 +2,7 @@
 # About
 
 This project not only combines modern frameworks and tools but also offers a hands-on approach to building a robust and feature-rich e-commerce platform. Whether you're exploring frontend development with React or diving deep into backend APIs with .NET 8, this stack provides a comprehensive learning experience. 
+
 Project URL: https://poc-react-guitarshop-app-apaybrg9eueyd4ea.brazilsouth-01.azurewebsites.net/catalog
 
 # Stacks of this project
