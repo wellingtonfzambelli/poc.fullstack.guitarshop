@@ -76,11 +76,17 @@ const EndpointsBasket = {
     
     addProduct: (productId: string, quantity: number = 1) =>
         axios.post(`${import.meta.env.VITE_API_BASE_URL_GUITAR_SHOP}/basket?productId=${productId}&quantity=${quantity}`, {})
-             .then(response => response.data),
+             .then(response => {
+                toast.success('Product added to the basket');
+                return response.data
+             }),
 
     removeProduct: (productId: string, quantity: number = 1) =>
         axios.delete(`${import.meta.env.VITE_API_BASE_URL_GUITAR_SHOP}/basket?productId=${productId}&quantity=${quantity}`)
-             .then(response => response.data),             
+             .then(response => {
+                 toast.success('Product removed from the basket');
+                 return response.data
+             })
 }
 
 const EndpointsTestErrors = {
