@@ -1,5 +1,7 @@
+
 # About
 
+Project URL: https://poc-react-guitarshop-app-apaybrg9eueyd4ea.brazilsouth-01.azurewebsites.net/catalog
 
 # Stacks of this project
 __Frontend__
@@ -17,7 +19,7 @@ __Frontend__
 __Backend__
 - .NET 8
 - Entity Framework Core (Migrations)
-- SQLIte
+- MySQL
 - Web Api
 - Swagger
 - Visual Studio Community 2022
