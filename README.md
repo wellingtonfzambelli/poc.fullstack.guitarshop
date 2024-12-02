@@ -1,5 +1,7 @@
+
 # About
 
+Project URL: https://poc-react-guitarshop-app-apaybrg9eueyd4ea.brazilsouth-01.azurewebsites.net/catalog
 
 # Stacks of this project
 __Frontend__
@@ -17,7 +19,7 @@ __Frontend__
 __Backend__
 - .NET 8
 - Entity Framework Core (Migrations)
-- SQLIte
+- MySQL
 - Web Api
 - Swagger
 - Visual Studio Community 2022
@@ -102,3 +104,25 @@ npm install react-toastify
 ```VS Code terminal
 npm install @reduxjs/toolkit
 ```
+
+# Azure Deploy
+
+Create a Resource Group
+
+![image](https://github.com/user-attachments/assets/c77084aa-b20a-48b8-af3b-fc706f83d1f1)
+
+
+Inside the Resource Group, add a Web App
+
+![image](https://github.com/user-attachments/assets/905d9bb1-c8da-4260-aa90-7fac0c6e8657)
+
+Inside the Resource Group, add the Azure MySQL
+
+![image](https://github.com/user-attachments/assets/447ca934-fd49-42c7-bc75-af96ce299da8)
+
+
+Choose your Azure Application
+![image](https://github.com/user-attachments/assets/8b9ca9bd-0b80-4d06-b157-e21103beae6d)
+
+
+![image](https://github.com/user-attachments/assets/5e08726b-2848-44ce-be9e-62958425184c)
