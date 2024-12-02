@@ -106,9 +106,11 @@ npm install @reduxjs/toolkit
 # Azure Deploy
 
 Create a Resource Group
+
 ![image](https://github.com/user-attachments/assets/c77084aa-b20a-48b8-af3b-fc706f83d1f1)
 
 
 Inside the Resource Group, add a Web App
+
 ![image](https://github.com/user-attachments/assets/905d9bb1-c8da-4260-aa90-7fac0c6e8657)
 
