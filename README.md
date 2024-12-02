@@ -122,3 +122,5 @@ Inside the Resource Group, add the Azure MySQL
 Choose your Azure Application
 ![image](https://github.com/user-attachments/assets/8b9ca9bd-0b80-4d06-b157-e21103beae6d)
 
+
+![image](https://github.com/user-attachments/assets/5e08726b-2848-44ce-be9e-62958425184c)
