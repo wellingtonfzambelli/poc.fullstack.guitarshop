@@ -49,7 +49,7 @@ It'll run the SEED logic on the "Progran.cs" file for the initial data in the 'P
 4 - Open the SQLite window and you're ready to run the queries
 ![image](https://github.com/user-attachments/assets/5a2fdebe-30b6-4d15-bab9-1c0dc71f2a4c)
 
-# Setting up the frontend application
+# Frontend - Setting up the application
 1 - Open the workspace "poc.fullstack.guitarshop.frontend" on the Visual Studio Code
 
 2 - On the terminal execute the commands bellow
