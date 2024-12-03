@@ -6,7 +6,18 @@ This project not only combines modern frameworks and tools but also offers a han
 Project URL: https://poc-react-guitarshop-app-apaybrg9eueyd4ea.brazilsouth-01.azurewebsites.net/catalog
 
 # Stacks of this project
-__Frontend__
+
+__Backend__
+- .NET 8
+- Entity Framework Core (Migrations)
+- MySQL
+- Web Api
+- Swagger
+- Visual Studio Community 2022
+- Google Chrome (using React DevTools) - main browser
+
+  
+__Frontend - React__
 - React 18
 - Vite
 - Library -> Redux _(https://redux.js.org)_
@@ -17,15 +28,6 @@ __Frontend__
 - Library -> React Toastify _(https://www.npmjs.com/package/react-toastify)_
 - Visual Studio Code -> Extensions (Simple React Snippets, ESLint, Material Icon Theme, Prettier, StandardJS)
 - Browser Plugins -> React Developer Tools
-
-__Backend__
-- .NET 8
-- Entity Framework Core (Migrations)
-- MySQL
-- Web Api
-- Swagger
-- Visual Studio Community 2022
-- Google Chrome (using React DevTools) - main browser
 
 
 # Setting up the backend application
