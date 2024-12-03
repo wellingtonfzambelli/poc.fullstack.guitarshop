@@ -121,11 +121,19 @@ You'll see a new folder and .yml file with the configuration of the CI/CD pipeli
 
 ![image](https://github.com/user-attachments/assets/4744e9ed-8140-47bb-b60e-49de4d966f39)
 
-Now go to the "Actions" tab
+Now go to the "Actions" tab and it shows the pipelines based on .yml file!
 
 ![image](https://github.com/user-attachments/assets/209208f5-bd51-4909-8d56-1cee60505d06)
 
-In my case, I got a build error. I
+Obs: In my case, I got a build error. I had to open the .yml file and create a new env variable pointing to the correcto project folder.
+
+![image](https://github.com/user-attachments/assets/6732f79e-a40c-4e35-9477-f4454b841b17)
+
+After that, I saved, committed and pushed the code to the "main" branch. It will trigger the pipeline automatically on Git Actions
+
+![image](https://github.com/user-attachments/assets/e4f6181a-4098-4470-b4ea-4957cc0e5eac)
+
+![image](https://github.com/user-attachments/assets/82173999-d19c-44d6-a4bc-da9caceaa765)
 
 
 # Azure Deploy (Manually)
