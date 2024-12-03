@@ -30,7 +30,7 @@ __Frontend - React__
 - Browser Plugins -> React Developer Tools
 
 
-# Setting up the backend application
+# Backend - Setting up the application
 1 - Run migration commands
 ```Migrations
 dotnet ef migrations add SeedProducts
