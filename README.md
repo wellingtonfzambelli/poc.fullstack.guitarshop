@@ -135,6 +135,9 @@ After that, I saved, committed and pushed the code to the "main" branch. It will
 
 ![image](https://github.com/user-attachments/assets/82173999-d19c-44d6-a4bc-da9caceaa765)
 
+Now the application is deployed and working on the Azure environment
+![image](https://github.com/user-attachments/assets/a7b5520c-5e76-45e9-aba1-6798ce85409e)
+
 
 # Azure Deploy (Manually)
 
