@@ -107,7 +107,28 @@ npm install react-toastify
 npm install @reduxjs/toolkit
 ```
 
-# Azure Deploy
+# CI/CD Azure + Github Actions
+
+Go to your application on Azure, click on the left menu "Deployiment" -> "Deployment Center"
+Log into your Github account e save it
+
+![image](https://github.com/user-attachments/assets/3e366e5e-73a5-430d-ad94-ff085e97cc3f)
+
+
+Back to your application Github Repository and click on "Code" tab
+
+You'll see a new folder and .yml file with the configuration of the CI/CD pipelines
+
+![image](https://github.com/user-attachments/assets/4744e9ed-8140-47bb-b60e-49de4d966f39)
+
+Now go to the "Actions" tab
+
+![image](https://github.com/user-attachments/assets/209208f5-bd51-4909-8d56-1cee60505d06)
+
+In my case, I got a build error. I
+
+
+# Azure Deploy (Manually)
 
 Create a Resource Group
 
