@@ -7,7 +7,7 @@ Project URL: https://poc-react-guitarshop-app-apaybrg9eueyd4ea.brazilsouth-01.az
 
 # Stacks of this project
 __Frontend__
-- ReactJs
+- React 18
 - Vite
 - Library -> Redux _(https://redux.js.org)_
 - Library -> Redux Toolkit _(https://redux-toolkit.js.org)_
