@@ -7,7 +7,7 @@ Project URL: https://poc-react-guitarshop-app-apaybrg9eueyd4ea.brazilsouth-01.az
 
 # Stacks of this project
 __Frontend__
-- ReactJs
+- React 18
 - Vite
 - Library -> Redux _(https://redux.js.org)_
 - Library -> Redux Toolkit _(https://redux-toolkit.js.org)_
@@ -107,7 +107,7 @@ npm install react-toastify
 npm install @reduxjs/toolkit
 ```
 
-# Azure Deploy
+# Azure Server Settings
 
 Create a Resource Group
 
@@ -122,6 +122,40 @@ Inside the Resource Group, add the Azure MySQL
 
 ![image](https://github.com/user-attachments/assets/447ca934-fd49-42c7-bc75-af96ce299da8)
 
+
+# CI/CD Azure + Github Actions
+
+Go to your application on Azure, click on the left menu "Deployiment" -> "Deployment Center"
+Log into your Github account e save it
+
+![image](https://github.com/user-attachments/assets/3e366e5e-73a5-430d-ad94-ff085e97cc3f)
+
+
+Back to your application Github Repository and click on "Code" tab
+
+You'll see a new folder and .yml file with the configuration of the CI/CD pipelines
+
+![image](https://github.com/user-attachments/assets/4744e9ed-8140-47bb-b60e-49de4d966f39)
+
+Now go to the "Actions" tab and it shows the pipelines based on .yml file!
+
+![image](https://github.com/user-attachments/assets/209208f5-bd51-4909-8d56-1cee60505d06)
+
+Obs: In my case, I got a build error. I had to open the .yml file and create a new env variable pointing to the correcto project folder.
+
+![image](https://github.com/user-attachments/assets/6732f79e-a40c-4e35-9477-f4454b841b17)
+
+After that, I saved, committed and pushed the code to the "main" branch. It will trigger the pipeline automatically on Git Actions
+
+![image](https://github.com/user-attachments/assets/e4f6181a-4098-4470-b4ea-4957cc0e5eac)
+
+![image](https://github.com/user-attachments/assets/82173999-d19c-44d6-a4bc-da9caceaa765)
+
+Now the application is deployed and working on the Azure environment
+![image](https://github.com/user-attachments/assets/a7b5520c-5e76-45e9-aba1-6798ce85409e)
+
+
+# Azure Deploy (Manually)
 
 Choose your Azure Application
 ![image](https://github.com/user-attachments/assets/8b9ca9bd-0b80-4d06-b157-e21103beae6d)
