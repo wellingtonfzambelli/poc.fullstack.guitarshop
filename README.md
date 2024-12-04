@@ -26,7 +26,7 @@ __Frontend - React__
 - Library -> Material UI _(https://mui.com/material-ui)_
 - Library -> React Router _(https://reactrouter.com)_
 - Library -> React Toastify _(https://www.npmjs.com/package/react-toastify)_
-- Visual Studio Code -> Extensions (Simple React Snippets, ESLint, Material Icon Theme, Prettier, StandardJS)
+- Visual Studio Code -> Extensions (Simple React Snippets, ESLint, Material Icon Theme, Prettier, StandardJS, Auto Rename Tag)
 - Browser Plugins -> React Developer Tools
 
 
